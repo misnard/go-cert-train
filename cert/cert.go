@@ -11,14 +11,14 @@ var MaxLenName = 30
 
 type Cert struct {
 	Course string
-	Name string
-	Date time.Time
+	Name   string
+	Date   time.Time
 
-	LabelTitle string
-	LabelCompletion string
-	LabelPresented string
+	LabelTitle         string
+	LabelCompletion    string
+	LabelPresented     string
 	LabelParticipation string
-	LabelDate string
+	LabelDate          string
 }
 
 type Saver interface {
@@ -42,14 +42,14 @@ func New(course, name, date string) (*Cert, error) {
 	}
 
 	cert := &Cert{
-		Course: c,
-		Name: n,
-		Date: d,
-		LabelTitle: fmt.Sprintf("%v Certificate - %v", c, n),
-		LabelCompletion: "Certificate of Completion",
-		LabelPresented: "This Certificate is presented To",
+		Course:             c,
+		Name:               n,
+		Date:               d,
+		LabelTitle:         fmt.Sprintf("%v Certificate - %v", c, n),
+		LabelCompletion:    "Certificate of Completion",
+		LabelPresented:     "This Certificate is presented To",
 		LabelParticipation: fmt.Sprintf("For particiation in the %v", c),
-		LabelDate: fmt.Sprintf("Date: %v", d.Format("02/01/2006  02-01-2006 ")),
+		LabelDate:          fmt.Sprintf("Date: %v", d.Format("02/01/2006")),
 	}
 
 	return cert, nil
@@ -97,4 +97,3 @@ func validateStr(str string, maxLen int) (string, error) {
 
 	return c, nil
 }
-
