@@ -14,7 +14,6 @@ func ParseCSV(filename string) ([]*Cert, error) {
 	defer f.Close()
 
 	r := csv.NewReader(f)
-	r.ReadAll()
 	records, err := r.ReadAll()
 	if err != nil {
 		return certs, err

@@ -31,15 +31,18 @@ func main() {
 		os.Exit(1)
 	}
 
-	c, err := cert.New("Golang programming", "Bob Dylan", "2021-06-21")
+	certs, err := cert.ParseCSV(*inputFileName)
+
 	if err != nil {
 		fmt.Printf("Error during certificate creation: %v", err)
 		os.Exit(1)
 	}
 
-	err = saver.Save(*c)
-	if err != nil {
-		fmt.Printf("Error during pdf saving: %v", err)
-		os.Exit(1)
+	for _, c := range certs {
+		err = saver.Save(*c)
+		if err != nil {
+			fmt.Printf("Error during pdf saving: %v", err)
+			os.Exit(1)
+		}
 	}
 }
